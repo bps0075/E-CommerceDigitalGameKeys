@@ -3,8 +3,8 @@
 ## Names
 * Brandon Sharp
 * Nick Newbury
-* Aaron
-* Danielle
+* Aaron Jacob
+* Danielle Hess
 * Ethan Willinger
 
 ## About
