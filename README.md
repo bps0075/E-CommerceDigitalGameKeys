@@ -2,7 +2,7 @@
 
 ## Names
 * Brandon Sharp
-* Nick Newberry
+* Nick Newbury
 * Aaron
 * Danielle
 * (Big Pumpkin discord name)
