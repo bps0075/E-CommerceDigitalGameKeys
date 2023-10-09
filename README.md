@@ -13,6 +13,6 @@ This E-Commerce project will be about selling digital game keys that allow a use
 ## To run
 
 1. Install XAMPP
-2. Clone repo into C:/<xampp application location>/htdocs/
+2. Clone repo into C:/\<xampp application location\>/htdocs/
 3. Turn on APACHE in XAMPP (should be in your system tray)
 4. In the address bar in your web browser type: http://localhost/     E-CommerceDigitalGameKeys/html/homepage.html
