@@ -18,6 +18,7 @@ if ($_POST['_check_submission']) {
 //What to display when successful
 function process_form($email) {
     print "Registration is successful!" . $email;
+    print "<a href = '..\html\homepage.html'>go back home";
 }
 
 //Check for password matching and email formatting
