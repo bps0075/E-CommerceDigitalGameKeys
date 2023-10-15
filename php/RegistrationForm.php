@@ -43,7 +43,7 @@ function show_form($errors = '') {
     if ($errors) {
         print 'Please correct these errors: <ul><li>';
         print implode('</li><li>', $errors);
-        print '</li>></ul>';
+        print '</li></ul>';
     }
 
     print<<<_HTML_
