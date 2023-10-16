@@ -7,16 +7,43 @@ if ($_POST['_check_submission']) {
     if ($form_errors = validate_form($email, $password)) {
         show_form($form_errors);
     } else {
-        process_form();
+        process_form($email, $password, $form_errors);
     }
 } else {
     show_form();
 }
 
 //What to display when successful
-function process_form() {
-    print "Login successful!";
-    print "<a href = '..\html\homepage.html'>go back home";
+function process_form($email, $password, $form_errors) {
+
+    try {
+        require_once "database.php";
+
+        $query = "SELECT * FROM users WHERE email = ? AND password = ?";
+
+        $stmt = $pdo->prepare($query);
+
+        $stmt->execute([$email, $password]);
+        $results = $stmt->fetchAll();
+
+        if (empty($results)) {
+            echo "No user exists!";
+            show_form($form_errors);
+        } else {
+            $pdo = null;
+            $stmt = null;
+            print "Login successful!";
+            print "<a href = '..\html\homepage.html'>go back home";
+        die();
+        }
+
+        
+        
+
+    } catch(PDOException $e) {
+        die("Query failed: " . $e->getMessage());
+    }
+    
 }
 
 

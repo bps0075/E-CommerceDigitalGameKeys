@@ -9,16 +9,35 @@ if ($_POST['_check_submission']) {
     if ($form_errors = validate_form($email, $password1, $password2)) {
         show_form($form_errors);
     } else {
-        process_form($email);
+        process_form($email, $password1);
     }
 } else {
     show_form();
 }
 
 //What to display when successful
-function process_form($email) {
-    print "Registration is successful!" . $email;
-    print "<a href = '..\html\homepage.html'>go back home";
+function process_form($email, $password1) {
+
+    try {
+        require_once "database.php";
+
+        $query = "INSERT INTO users (email, password) VALUES (?, ?);";
+
+        $stmt = $pdo->prepare($query);
+
+        $stmt->execute([$email, $password1]);
+
+        $pdo = null;
+        $stmt = null;
+        print "Registration is successful!";
+        print "<a href = '..\html\homepage.html'>go back home";
+        die();
+        
+
+    } catch(PDOException $e) {
+        die("Query failed: " . $e->getMessage());
+    }
+    
 }
 
 //Check for password matching and email formatting
