@@ -1,4 +1,9 @@
 <?php
+
+/* This script contains an HTML form for signing up for an account, it also checks the database
+    for matching user credentials, and communicates with the user if their
+    sign up attempt was succcessful */
+    
 if ($_POST['_check_submission']) {
 
 
@@ -9,19 +14,49 @@ if ($_POST['_check_submission']) {
     if ($form_errors = validate_form($email, $password1, $password2)) {
         show_form($form_errors);
     } else {
-        process_form($email);
+        process_form($email, $password1);
     }
 } else {
     show_form();
 }
 
-//What to display when successful
-function process_form($email) {
-    print "Registration is successful!" . $email;
-    print "<a href = '..\html\homepage.html'>go back home";
+//Begin database query, first we want to check if the user exists, if they
+//don't we add them to the database.
+function process_form($email, $password1) {
+
+    try {
+        require_once "database.php";
+
+        $query = "SELECT * FROM users  WHERE email = ?";
+        $stmt = $pdo->prepare($query);
+        $stmt->execute([$email]);
+        $results = $stmt->fetchAll();
+
+        if (empty($results)) {
+            $query = "INSERT INTO users (email, password) VALUES (?, ?);";
+
+            $stmt = $pdo->prepare($query);
+
+            $stmt->execute([$email, $password1]);
+
+            $pdo = null;
+            $stmt = null;
+            print "Registration is successful!";
+            print "<a href = '..\html\homepage.html'>go back home";
+            die();
+        } else {
+            print "User already exists!";
+            show_form();
+        }
+
+    } catch(PDOException $e) {
+        die("Query failed: " . $e->getMessage());
+    }
+    
 }
 
-//Check for password matching and email formatting
+//Check for password matching and email formatting, this goes before database
+//checking
 function validate_form($email, $password1, $password2) {
     $errors = array();
     //Email address validation
@@ -43,7 +78,7 @@ function show_form($errors = '') {
     if ($errors) {
         print 'Please correct these errors: <ul><li>';
         print implode('</li><li>', $errors);
-        print '</li>></ul>';
+        print '</li></ul>';
     }
 
     print<<<_HTML_
