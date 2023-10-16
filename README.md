@@ -12,13 +12,11 @@ This E-Commerce project will be about selling digital game keys that allow a use
 
 ## To access webpage
 1. Install XAMPP
-2. Clone repo into C:/<xampp application location>/htdocs/
+2. Clone repo into C:/\<xampp application location\>/htdocs/
 3. Turn on APACHE in XAMPP (should be in your system tray)
 4. In the address bar in your web browser type: http://localhost/E-CommerceDigitalGameKeys/html/homepage.html
 
-
 ## To run backend for the first time on your local machine
-
 In order to avoid giving away development passwords for each local machine, you must manually change the 
 database name and mysql host in \php\database.php (host for local development will be localhost, production config will be different) upon initial installation
 
