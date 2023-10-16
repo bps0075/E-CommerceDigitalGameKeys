@@ -1,4 +1,9 @@
 <?php
+
+/* This script contains an HTML form for signing up for an account, it also checks the database
+    for matching user credentials, and communicates with the user if their
+    sign up attempt was succcessful */
+    
 if ($_POST['_check_submission']) {
 
 
@@ -15,24 +20,34 @@ if ($_POST['_check_submission']) {
     show_form();
 }
 
-//What to display when successful
+//Begin database query, first we want to check if the user exists, if they
+//don't we add them to the database.
 function process_form($email, $password1) {
 
     try {
         require_once "database.php";
 
-        $query = "INSERT INTO users (email, password) VALUES (?, ?);";
-
+        $query = "SELECT * FROM users  WHERE email = ?";
         $stmt = $pdo->prepare($query);
+        $stmt->execute([$email]);
+        $results = $stmt->fetchAll();
 
-        $stmt->execute([$email, $password1]);
+        if (empty($results)) {
+            $query = "INSERT INTO users (email, password) VALUES (?, ?);";
 
-        $pdo = null;
-        $stmt = null;
-        print "Registration is successful!";
-        print "<a href = '..\html\homepage.html'>go back home";
-        die();
-        
+            $stmt = $pdo->prepare($query);
+
+            $stmt->execute([$email, $password1]);
+
+            $pdo = null;
+            $stmt = null;
+            print "Registration is successful!";
+            print "<a href = '..\html\homepage.html'>go back home";
+            die();
+        } else {
+            print "User already exists!";
+            show_form();
+        }
 
     } catch(PDOException $e) {
         die("Query failed: " . $e->getMessage());
@@ -40,7 +55,8 @@ function process_form($email, $password1) {
     
 }
 
-//Check for password matching and email formatting
+//Check for password matching and email formatting, this goes before database
+//checking
 function validate_form($email, $password1, $password2) {
     $errors = array();
     //Email address validation
