@@ -24,29 +24,29 @@ database name and mysql host in \php\database.php (host for local development wi
 
 2. Add 4 tables
    
-    1st table: name it "users" and give it these specifications. It will have 5 columns, and these columns have the following properties.
+    1st table: name it "users" and give it these specifications. It will have 5 columns, and these columns have the following properties. <br>
         a. id || INT || auto increment <br>
-        b. address || VARCHAR || length 200
-        c. phone || int
-        d. email || VARCHAR || length 250
-        e. password || VARCHAR || length 500
+        b. address || VARCHAR || length 200 <br>
+        c. phone || int <br>
+        d. email || VARCHAR || length 250 <br>
+        e. password || VARCHAR || length 500 <br>
 
-   2nd table: name it "orders". It will have 3 columns, these columns have the following properties:
-        a. id || INT || auto increment
-        b. user_id || INT
-        c. date || VARCHAR || length 100 || Default = current_timesteamp()
+   2nd table: name it "orders". It will have 3 columns, these columns have the following properties: <br>
+        a. id || INT || auto increment <br>
+        b. user_id || INT<br>
+        c. date || VARCHAR || length 100 || Default = current_timesteamp() <br>
 
-   3rd table: name it "order_products" it will have 4 columns, these columns have the following properties:
-        a. id || INT || auto increment
-        b. order_id || INT
-        c. product_id || INT
-        d. product_quantity || INT
+   3rd table: name it "order_products" it will have 4 columns, these columns have the following properties: <br>
+        a. id || INT || auto increment <br>
+        b. order_id || INT <br>
+        c. product_id || INT <br>
+        d. product_quantity || INT <br>
 
-   4th table: name it "items", it will have 4 columns, these columns have the following properties:
-       a. id || INT || auto increment
-       b. name || VARCHAR || length 500
-       c. price || INT
-       d. steamkey || VARCHAR || length 700 || UNIQUE
+   4th table: name it "items", it will have 4 columns, these columns have the following properties: <br>
+       a. id || INT || auto increment <br>
+       b. name || VARCHAR || length 500 <br>
+       c. price || INT <br>
+       d. steamkey || VARCHAR || length 700 || UNIQUE <br>
 
    
 
