@@ -48,6 +48,10 @@ database name and mysql host in \php\database.php (host for local development wi
        c. price || INT <br>
        d. steamkey || VARCHAR || length 700 || UNIQUE <br>
 
+      The reason why order_products, and orders are seperated is to follow the 1st Normalization rule - cells cannot have tables within
+      them, if a user orders multiple products, the resulting order can be brought up by joining the orders and order_products
+      tables based on order_id
+
    
 
 4. In \php\database.php set "mysql::host" to "localhost". Then set "dbname=" to the database you created earlier.
