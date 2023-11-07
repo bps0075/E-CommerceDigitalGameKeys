@@ -22,9 +22,9 @@ database name and mysql host in \php\database.php (host for local development wi
 
 1. Create a database in myphpadmin, give it a name.
 
-2. Add 4 tables,
-   1st table: name it "users" and give it these specifications. It will have 5 columns, 
-    and these columns have the following properties.
+2. Add 4 tables
+   
+    1st table: name it "users" and give it these specifications. It will have 5 columns, and these columns have the following properties.
         a. id || INT || auto increment
         b. address || VARCHAR || length 200
         c. phone || int
