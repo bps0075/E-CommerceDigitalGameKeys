@@ -29,17 +29,24 @@ if ($_POST['_check_submission']) {
 function process_form($email, $password, $form_errors) {
 
     try {
+
+        //Connect to database
         require_once "database.php";
 
 
+        //Select all records from users table where the email and password match passed parameters
         //Question marks represent variables that are defined in the argument array passed into stmt->execute
         $query = "SELECT * FROM users WHERE email = ? AND password = ?";
 
         $stmt = $pdo->prepare($query);
 
+        //Execute the query using $email and $password (specified by the user) as arguments
         $stmt->execute([$email, $password]);
+
+        //Place all records in $results
         $results = $stmt->fetchAll();
 
+        //If results has nothing, no user exists and the form is displayed again with appropriate errors
         if (empty($results)) {
             echo "No user exists!";
             show_form($form_errors);
@@ -51,12 +58,12 @@ function process_form($email, $password, $form_errors) {
 
             print "Login successful!";
             print "<a href = '..\html\homepage.html'>go back home";
+
+        //Exit this function
         die();
         }
 
-        
-        
-
+    //If something goes wrong with the query
     } catch(PDOException $e) {
         die("Query failed: " . $e->getMessage());
     }
@@ -71,6 +78,7 @@ function validate_form($email, $password) {
     return $errors;
 }
 
+//HTML LOGIN FORM
 function show_form($errors = '') {
     if ($errors) {
         print 'Please correct these errors: <ul><li>';

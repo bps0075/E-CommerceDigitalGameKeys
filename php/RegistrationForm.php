@@ -27,24 +27,40 @@ function process_form($email, $password1) {
     try {
         require_once "database.php";
 
+        //Select all records from users table where email is equal to specified parameter
         $query = "SELECT * FROM users  WHERE email = ?";
         $stmt = $pdo->prepare($query);
+
+        //Perform the query with $email as the specified argument
         $stmt->execute([$email]);
+
+        //Save all records to $results
         $results = $stmt->fetchAll();
 
+        //If results has nothing
         if (empty($results)) {
+
+            //specify the insert query with "?, ?" being the email and password parameters respectively
             $query = "INSERT INTO users (email, password) VALUES (?, ?);";
 
+            //Package the query for execution
             $stmt = $pdo->prepare($query);
 
+            //Execute the query with $email and $password1 being the arguments
             $stmt->execute([$email, $password1]);
 
+            //Clean up connections
             $pdo = null;
             $stmt = null;
+
+            //Give the user a pat on the back
             print "Registration is successful!";
             print "<a href = '..\html\homepage.html'>go back home";
+
+            //Exit
             die();
         } else {
+            //User already exists, display the form again
             print "User already exists!";
             show_form();
         }
