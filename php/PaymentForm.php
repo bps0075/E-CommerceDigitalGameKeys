@@ -3,6 +3,10 @@
 /* This script contains an HTML form for payment information, it will combine
     all items and their prices in the users cart to display a total */
 
+    /*NOTE THIS IS A WORK IN PROGRESS AND DOES NOT WORK*/
+
+    //Note that the price is calculated before displaying the payment form
+
 //Once the user submits their information...
 if ($_POST['_check_submission']) {
     //Collect their payment info (NEEDS TO BE ENCRYPTED)
@@ -16,12 +20,15 @@ if ($_POST['_check_submission']) {
     //email will be obtained from jwt token maybe?
 
     if ($form_errors = validate_form($firstName, $middleInitial, $lastName, $cardNumber, $csc, $expiration)) {
+        $user_total = calculateDisplayTotalPrice($shoppingCart);
         show_form($form_errors);
     } else {
-        process_form($firstName, $middleInitial, $lastName, $cardNumber, $csc, $expiration);
-    } 
+    show_form($userTotal);
+    }
 } else {
-    show_form();
+    $shoppingCart = $_GET["shoppingCart"];
+    $userTotal = calculateDisplayTotalPrice($shoppingCart);
+    show_form($form_errors, $userTotal);
 }
 
 function validate_form($firstName, $middleInitial, $lastName, $cardNumber, $csc, $expiration) {
@@ -44,9 +51,48 @@ function validate_form($firstName, $middleInitial, $lastName, $cardNumber, $csc,
     return $errors;
 }
 
+//Perform this function and use its returned price for the price display
+//NEVER return the price information to frontend, only backend gets access to this
+function calculateDisplayTotalPrice($shoppingCart) {
+    $total = 0.00;
+    $cost = 0.00;
+    $cartSize = count($shoppingCart);
+    try {
+        require_once "database.php";
+
+        for($i = 0; $i < $cartSize; $i++) {
+            //Check the cost of each item
+            $query = "SELECT * FROM items WHERE id = ? LIMIT 1";
+            $stmt = $pdo->prepare($query);
+            $stmt->execute([$id]);
+            $results = $stmt->fetchAll();
+
+            if (!empty($results)) {
+                $cost = $results['price'];
+                $total += $cost;
+                
+                
+
+            } else {
+                print "Item does not exist, please load up your shopping cart with items we have for sale!";
+                show_form();
+                break;
+            }
+        }
+        
+        //Clean up connections
+        $pdo = null;
+        $stmt = null;
+        return $total;
+
+    } catch(PDOException $e) {
+        die("Query failed: " . $e->getMessage());
+    }
+}
 
 
-function show_form($errors = '') {
+
+function show_form($errors = '', $userTotal) {
     if ($errors) { 
         print 'Please correct these errors: <ul><li>';
         print implode('</li><li>', $errors);
