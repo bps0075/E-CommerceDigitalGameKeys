@@ -1,0 +1,15 @@
+head {background-color: rgb(0, 137, 145);}
+body {background-color: rgb(255, 255, 255);}
+#h1 {color: rgb(54, 49, 49); text-align: center; margin: 20px}
+#p1 {
+    text-align: center;
+    color: black;
+    font-size: 12px;
+    margin: 10px;
+}
+#p2 {
+    text-align: center;
+    color: black;
+    font-size: 12px;
+    margin: 10px;
+}
