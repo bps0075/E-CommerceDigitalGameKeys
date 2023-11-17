@@ -9,7 +9,6 @@ function addToCart(item_id) {
     //alert("VALID ITEM")
     return true;
     }
-    cart.push(item_id);
 }
 
 function goToPayment() {
