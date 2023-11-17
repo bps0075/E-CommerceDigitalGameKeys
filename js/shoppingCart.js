@@ -23,3 +23,6 @@ function goToPayment() {
     document.body.appendChild(form);
     form.submit();
 }
+
+
+// The JavaScript function goToPayment() creates a form dynamically, sets its action to the PHP payment processing file (PaymentForm.php), adds the shopping cart data as a hidden input, and submits the form.
