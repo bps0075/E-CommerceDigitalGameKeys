@@ -1,7 +1,14 @@
 const cart = [];
 
 function addToCart(item_id) {
-    // Your existing code to add item_id to the cart
+    if (typeof item_id != "number") {
+        //alert("INVALID! Not an item")
+        return false;
+    } else {
+    cart.push(item_id);
+    //alert("VALID ITEM")
+    return true;
+    }
     cart.push(item_id);
 }
 
