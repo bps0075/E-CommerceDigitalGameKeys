@@ -13,11 +13,10 @@ function addToCart(item_id) {
 }
 
 function goToPayment() {
-    // Assuming you have a function to redirect to the payment page
     // Create a form dynamically
     const form = document.createElement('form');
     form.method = 'POST';
-    form.action = 'PaymentForm.php'; // Replace with your payment processing PHP file
+    form.action = 'PaymentForm.php'; // Replace with payment processing PHP file
 
     // Create a hidden input field to store the cart data
     const input = document.createElement('input');
