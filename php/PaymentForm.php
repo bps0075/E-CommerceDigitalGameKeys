@@ -16,6 +16,7 @@ if ($_POST['_check_submission']) {
     $cardNumber = $_POST["cardNumber"];
     $csc = $_POST["csc"];
     $expiration = $_POST["expiration"];
+    $shoppingCart = json_decode($_POST['shoppingCart']); // Now you have $shoppingCart containing the item IDs from the cart. Use this data to calculate the total price and process payment
 
     //email will be obtained from jwt token maybe?
 
