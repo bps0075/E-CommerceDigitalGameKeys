@@ -1,5 +1,11 @@
-head {background-color: rgb(0, 137, 145);}
-body {background-color: rgb(255, 255, 255);}
+.Header {
+    background-color: grey
+}
+
+body {background-color: rgb(33, 183, 191);}
+
+#head1 {background-color: rgb(0, 137, 145);}
+#body2 {background-color: rgb(255, 255, 255);}
 #h1 {color: rgb(54, 49, 49); text-align: center; margin: 20px}
 #p1 {
     text-align: center;
@@ -9,7 +15,13 @@ body {background-color: rgb(255, 255, 255);}
 }
 #p2 {
     text-align: center;
-    color: black;
+    color: rgb(189, 7, 7);
     font-size: 12px;
     margin: 10px;
+}
+#middle {
+    text-align: center;
+}
+#centerB {
+    box-align: center;
 }
