@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 
 <head class="Header" style="background-color:grey">
-    <link rel="stylesheet" type="text/css" href="..\css\style.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="shoppingCart.js"></script>
     <title>Digital Game Keys</title>
     <h1 style="text-align: center">Digital Game Keys</h1>
 </head>
@@ -10,10 +11,10 @@
     <h1 id="h1">Welcome! You may create an account or sign in below:</h1>
     <!--<p id="p2">Testing the color red with the css file</p>-->
     <table>
-        <button id="centerB"><a href = "..\php\RegistrationForm.php" style="text-align: center" class="btn btn-secondary"> Create Account </button><br> <br>
-        <button id="centerB"><a href = "..\php\LoginForm.php" style="text-align: center"> Login </a> </button><br> <br>
+        <button id="centerB"><a href = "php\RegistrationForm.php" style="text-align: center" class="btn btn-secondary"> Create Account </button><br> <br>
+        <button id="centerB"><a href = "php\LoginForm.php" style="text-align: center"> Login </a> </button><br> <br>
     </table>
     <button onclick="addToCart(1)">Add item to cart</button>
     <button onclick="goToPayment()">Proceed to Payment</button> <!-- this is the button to go to payment -->
-    <script src="..\js\shoppingCart.js"></script>
+
 </body>

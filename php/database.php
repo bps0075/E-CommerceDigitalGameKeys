@@ -4,8 +4,8 @@
 //This is "included" before each database query
 
 //MUST CHANGE THESE PARAMETERS TO MATCH YOU LOCAL DB
-$dsn = "mysql:host=localhost;dbname=<name of your db>";
-$dbusername = "";
+$dsn = "mysql:host=localhost;dbname=steamkeysapplication";
+$dbusername = "root";
 $dbpassword = "";
 
 //Attempt a connection to the database, if it fails, print the error message to the terminal.

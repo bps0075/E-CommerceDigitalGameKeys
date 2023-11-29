@@ -1,4 +1,4 @@
-const cart = [];
+let cart = [];
 
 function addToCart(item_id) {
     if (typeof item_id != "number") {
@@ -6,7 +6,7 @@ function addToCart(item_id) {
         return false;
     } else {
     cart.push(item_id);
-    //alert("VALID ITEM")
+    console.log(cart[0])
     return true;
     }
 }
@@ -15,7 +15,7 @@ function goToPayment() {
     // Create a form dynamically
     const form = document.createElement('form');
     form.method = 'POST';
-    form.action = 'PaymentForm.php'; // Replace with payment processing PHP file
+    form.action = 'php/PaymentForm.php'; // Replace with payment processing PHP file
 
     // Create a hidden input field to store the cart data
     const input = document.createElement('input');
