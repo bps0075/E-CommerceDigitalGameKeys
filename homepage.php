@@ -8,13 +8,12 @@
 </head>
 
 <body>
-    <h1 id="h1">Welcome! You may create an account or sign in below:</h1>
+    <h1 id="h1">Welcome! Create an account for faster checkout!</h1>
     <!--<p id="p2">Testing the color red with the css file</p>-->
     <table>
         <button id="centerB"><a href = "RegistrationForm.php" style="text-align: center" class="btn btn-secondary"> Create Account </button><br> <br>
         <button id="centerB"><a href = "LoginForm.php" style="text-align: center"> Login </a> </button><br> <br>
     </table>
-    <button onclick="addToCart(1)">Add item to cart</button>
     <button onclick="goToPayment()">Proceed to Payment</button> <!-- this is the button to go to payment -->
     <p>
     <?php 
