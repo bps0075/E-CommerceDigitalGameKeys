@@ -39,15 +39,20 @@ function process_form($email, $password1) {
 
         //If results has nothing
         if (empty($results)) {
+            
+
+            //Hash password (don't wanna store plain text passwords)
+            $hash = password_hash($password1, PASSWORD_DEFAULT);
 
             //specify the insert query with "?, ?" being the email and password parameters respectively
             $query = "INSERT INTO users (email, password) VALUES (?, ?);";
+
 
             //Package the query for execution
             $stmt = $pdo->prepare($query);
 
             //Execute the query with $email and $password1 being the arguments
-            $stmt->execute([$email, $password1]);
+            $stmt->execute([$email, $hash]);
 
             //Clean up connections
             $pdo = null;
