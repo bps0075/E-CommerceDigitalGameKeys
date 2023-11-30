@@ -6,7 +6,7 @@ function addToCart(item_id) {
         return false;
     } else {
     cart.push(item_id);
-    console.log(cart[0])
+    console.log(cart.length - 1)
     return true;
     }
 }
@@ -15,7 +15,7 @@ function goToPayment() {
     // Create a form dynamically
     const form = document.createElement('form');
     form.method = 'POST';
-    form.action = 'php/PaymentForm.php'; // Replace with payment processing PHP file
+    form.action = 'PaymentForm.php'; // Replace with payment processing PHP file
 
     // Create a hidden input field to store the cart data
     const input = document.createElement('input');
