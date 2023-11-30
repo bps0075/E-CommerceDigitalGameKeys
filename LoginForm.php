@@ -35,7 +35,7 @@ function process_form($email, $password, $form_errors) {
 
 
         // Obtain jwt secret key
-        $lines = file('..\config\config.txt');
+        $lines = file('config/config.txt');
         $jwt_key = $lines[1];
 
 
