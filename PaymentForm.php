@@ -7,6 +7,20 @@
 
     //Note that the price is calculated before displaying the payment form
 
+// Debugging code
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_POST['shoppingCart'])) {
+        $shoppingCart = json_decode($_POST['shoppingCart'], true);
+        echo '<pre>';
+        print_r($shoppingCart);
+        echo '</pre>';
+    } else {
+        echo 'Shopping cart data not received.';
+    }
+} else {
+    echo 'Invalid request method.';
+}
+
 //Once the user submits their information...
 if ($_POST['_check_submission']) {
     //Collect their payment info (NEEDS TO BE ENCRYPTED)
