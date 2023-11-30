@@ -1,12 +1,14 @@
 let cart = [];
 
 function addToCart(item_id) {
-    if (typeof item_id != "number") {
-        //alert("INVALID! Not an item")
-        return false;
-    } else {
+    if (typeof item_id !== "number" || !Number.isInteger(item_id)) {
+    // Invalid item_id
+    return false;
+    } 
+    else {
+    // Valid item_id
     cart.push(item_id);
-    console.log(cart.length - 1)
+    console.log(cart.length - 1);
     return true;
     }
 }
