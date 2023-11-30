@@ -1,12 +1,13 @@
 let cart = [];
 
 function addToCart(item_id) {
-    if (typeof item_id != "number") {
-        //alert("INVALID! Not an item")
-        return false;
-    } else {
+    if (typeof item_id !== "number" || !Number.isInteger(item_id)) {
+    // Invalid item_id
+    return false;
+    }  else {
+    // Valid item_id
     cart.push(item_id);
-    console.log(cart.length - 1)
+    console.log(cart.length - 1);
     return true;
     }
 }
@@ -15,7 +16,7 @@ function goToPayment() {
     // Create a form dynamically
     const form = document.createElement('form');
     form.method = 'POST';
-    form.action = 'PaymentForm.php'; // Replace with payment processing PHP file
+    form.action = 'PaymentForm.php'; // Replace with the correct path to PaymentForm.php
 
     // Create a hidden input field to store the cart data
     const input = document.createElement('input');
@@ -26,7 +27,12 @@ function goToPayment() {
     // Append the input to the form and then submit
     form.appendChild(input);
     document.body.appendChild(form);
+
+    // Submit the form
     form.submit();
+
+    // Remove the form from the DOM after submission
+    document.body.removeChild(form);
 }
 
 
