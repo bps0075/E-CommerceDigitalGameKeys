@@ -30,6 +30,15 @@ function process_form($email, $password, $form_errors) {
 
     try {
 
+        // Acquire JWT functions
+        require "JWT.php";
+
+
+        // Obtain jwt secret key
+        $lines = file('..\config\config.txt');
+        $jwt_key = $lines[1];
+
+
         //Connect to database
         require_once "database.php";
 
@@ -48,9 +57,34 @@ function process_form($email, $password, $form_errors) {
 
         //If results has nothing, no user exists and the form is displayed again with appropriate errors
         if (empty($results)) {
-            echo "No user exists!";
+            echo "Invalid credentials, please try again";
             show_form($form_errors);
         } else {
+
+            // < -- Begin generating JWT -- >
+
+            // Headers
+            $headers = array('alg'=> 'HS256', 'typ'=>'JWT');
+            // Create issued at
+            $issuedAt = time();
+
+            //Create payload
+            $payload = [
+                'iss' => 'https://steamkeys.com',
+                'aud' => 'https://steamkeys.com',
+                'iat' => $issuedAt,
+                'nbf' => $issuedAt,
+                'exp' => $issuedAt + 30,
+                'data' => [
+                    'email' => $email
+                ]
+            ];
+
+            $jwt = generate_jwt($headers, $payload,$jwt_key);
+            echo $jwt;
+
+            setcookie("yourtoken", $jwt, time() + 60, '/', '', 0, 1);
+
 
             //Clean up connections to the database to improve performance
             $pdo = null;
