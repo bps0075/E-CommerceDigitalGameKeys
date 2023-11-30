@@ -60,7 +60,7 @@ function process_form($email, $password1) {
 
             //Give the user a pat on the back
             print "Registration is successful!";
-            print "<a href = '..\html\homepage.html'>go back home";
+            print "<a href = 'index.php'>go back home";
 
             //Exit
             die();

@@ -88,7 +88,7 @@ function process_form($email, $password, $form_errors) {
             $stmt = null;
 
             print "Login successful!";
-            print "<a href = '..\homepage.html'>go back home";
+            print "<a href = 'index.php'>go back home";
 
             //Exit this function
             die();
