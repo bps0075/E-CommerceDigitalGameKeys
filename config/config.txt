@@ -1,2 +1,6 @@
-KEY
+jwt key
 yOopPMlHhDuC+qg1Ld9wvyK2VOSDCS5J7hM+7Xsdc0c=
+DB password
+7hR2uOrnnkXst2pp@
+Steam Key Secret Key
+supersteam
