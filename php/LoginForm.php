@@ -42,25 +42,23 @@ function process_form($email, $password, $form_errors) {
         //Connect to database
         require_once "database.php";
 
-
-        //Select all records from users table where the email and password match passed parameters
-        //Question marks represent variables that are defined in the argument array passed into stmt->execute
-        $query = "SELECT * FROM users WHERE email = ? AND password = ?";
-
+        //Get hashed password from database
+        $query = "SELECT * FROM users WHERE email = ?";
         $stmt = $pdo->prepare($query);
-
-        //Execute the query using $email and $password (specified by the user) as arguments
-        $stmt->execute([$email, $password]);
-
-        //Place all records in $results
+        $stmt->execute([$email]);
+        
         $results = $stmt->fetchAll();
 
-        //If results has nothing, no user exists and the form is displayed again with appropriate errors
         if (empty($results)) {
             echo "Invalid credentials, please try again";
             show_form($form_errors);
         } else {
+            $hash = $results[0]["password"];
+        }
 
+
+        //If results has nothing, no user exists and the form is displayed again with appropriate errors
+        if (password_verify($password, $hash)) {  
             // < -- Begin generating JWT -- >
 
             // Headers
@@ -81,7 +79,6 @@ function process_form($email, $password, $form_errors) {
             ];
 
             $jwt = generate_jwt($headers, $payload,$jwt_key);
-            echo $jwt;
 
             setcookie("yourtoken", $jwt, time() + 60, '/', '', 0, 1);
 
@@ -91,10 +88,15 @@ function process_form($email, $password, $form_errors) {
             $stmt = null;
 
             print "Login successful!";
-            print "<a href = '..\html\homepage.html'>go back home";
+            print "<a href = '..\homepage.html'>go back home";
 
-        //Exit this function
-        die();
+            //Exit this function
+            die();
+            
+        } else {
+            echo "Invalid credentials, please try again";
+            show_form($form_errors);
+
         }
 
     //If something goes wrong with the query
