@@ -4,8 +4,7 @@ function addToCart(item_id) {
     if (typeof item_id !== "number" || !Number.isInteger(item_id)) {
     // Invalid item_id
     return false;
-    } 
-    else {
+    }  else {
     // Valid item_id
     cart.push(item_id);
     console.log(cart.length - 1);
