@@ -24,8 +24,19 @@ function goToPayment() {
     input.name = 'shoppingCart';
     input.value = JSON.stringify(cart); // Convert cart array to a string before sending
 
-    // Append the input to the form and then submit
+    // Append the input to the form
     form.appendChild(input);
+
+    // Create another hidden input field to specify that the data should be treated as an array in PHP
+    const arrayFlag = document.createElement('input');
+    arrayFlag.type = 'hidden';
+    arrayFlag.name = 'is_array';
+    arrayFlag.value = '1'; // Set a value to indicate it's an array
+
+    // Append the arrayFlag to the form
+    form.appendChild(arrayFlag);
+
+    // Append the form to the body
     document.body.appendChild(form);
 
     // Submit the form
@@ -34,6 +45,5 @@ function goToPayment() {
     // Remove the form from the DOM after submission
     document.body.removeChild(form);
 }
-
 
 // The JavaScript function goToPayment() creates a form dynamically, sets its action to the PHP payment processing file (PaymentForm.php), adds the shopping cart data as a hidden input, and submits the form.
