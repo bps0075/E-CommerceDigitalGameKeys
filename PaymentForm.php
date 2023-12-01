@@ -10,10 +10,19 @@
 // Debugging code
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['shoppingCart'])) {
-        $shoppingCart = json_decode($_POST['shoppingCart'], true);
-        echo '<pre>';
-        print_r($shoppingCart);
-        echo '</pre>';
+        $shoppingCart = json_decode($_POST['shoppingCart'], true); // Set true to get an associative array
+
+        // Check if $shoppingCart is an array before using it
+        if (is_array($shoppingCart)) {
+            echo '<pre>';
+            print_r($shoppingCart);
+            echo '</pre>';
+            
+            // Now you can use $shoppingCart as an array in your functions
+            // Example: $total = calculateTotal($shoppingCart);
+        } else {
+            echo 'Error decoding shopping cart data.';
+        }
     } else {
         echo 'Shopping cart data not received.';
     }
