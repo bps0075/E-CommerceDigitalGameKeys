@@ -43,7 +43,8 @@ function process_form($email, $password, $form_errors) {
         require_once "database.php";
 
         //Get hashed password from database
-        $query = "SELECT * FROM users WHERE email = ?";
+        //Use stored procedure to prevent SQLi
+        $query = "CALL get_email(?);";
         $stmt = $pdo->prepare($query);
         $stmt->execute([$email]);
         
