@@ -28,7 +28,8 @@ function process_form($email, $password1) {
         require_once "database.php";
 
         //Select all records from users table where email is equal to specified parameter
-        $query = "SELECT * FROM users  WHERE email = ?";
+        //Use stored procedure to prevent SQLi
+        $query = "CALL get_email(?);";
         $stmt = $pdo->prepare($query);
 
         //Perform the query with $email as the specified argument
@@ -45,7 +46,7 @@ function process_form($email, $password1) {
             $hash = password_hash($password1, PASSWORD_DEFAULT);
 
             //specify the insert query with "?, ?" being the email and password parameters respectively
-            $query = "INSERT INTO users (email, password) VALUES (?, ?);";
+            $query = "CALL insert_login(?,?);";
 
 
             //Package the query for execution
