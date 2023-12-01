@@ -7,28 +7,6 @@
 
     //Note that the price is calculated before displaying the payment form
 
-// Debugging code
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (isset($_POST['shoppingCart'])) {
-        $shoppingCart = json_decode($_POST['shoppingCart'], true); // Set true to get an associative array
-
-        // Check if $shoppingCart is an array before using it
-        if (is_array($shoppingCart)) {
-            echo '<pre>';
-            print_r($shoppingCart);
-            echo '</pre>';
-            
-            // Now you can use $shoppingCart as an array in your functions
-            // Example: $total = calculateTotal($shoppingCart);
-        } else {
-            echo 'Error decoding shopping cart data.';
-        }
-    } else {
-        echo 'Shopping cart data not received.';
-    }
-} else {
-    echo 'Invalid request method.';
-}
 
 //Once the user submits their information...
 if ($_POST['_check_submission']) {
@@ -39,7 +17,7 @@ if ($_POST['_check_submission']) {
     $cardNumber = $_POST["cardNumber"];
     $csc = $_POST["csc"];
     $expiration = $_POST["expiration"];
-    $shoppingCart = json_decode($_POST['shoppingCart'], true); // Now you have $shoppingCart containing the item IDs from the cart. Use this data to calculate the total price and process payment
+    $shoppingCart = json_decode($_POST['shoppingCart']); // Now you have $shoppingCart containing the item IDs from the cart. Use this data to calculate the total price and process payment
 
     //email will be obtained from jwt token maybe?
 
@@ -50,7 +28,7 @@ if ($_POST['_check_submission']) {
     show_form($userTotal);
     }
 } else {
-    $shoppingCart = $_GET["shoppingCart"];
+    $shoppingCart = json_decode($_POST['shoppingCart'], true);
     $userTotal = calculateDisplayTotalPrice($shoppingCart);
     show_form($form_errors, $userTotal);
 }
@@ -85,6 +63,7 @@ function calculateDisplayTotalPrice($shoppingCart) {
         require_once "database.php";
 
         for($i = 0; $i < $cartSize; $i++) {
+            $id = $shoppingCart[$i];
             //Check the cost of each item
             //Use stored procedure to prevent SQLi            
             $query = "CALL check_cost(?);";
@@ -93,14 +72,14 @@ function calculateDisplayTotalPrice($shoppingCart) {
             $results = $stmt->fetchAll();
 
             if (!empty($results)) {
-                $cost = $results['price'];
+                //2D array due to array automatically getting nested with json_decode
+                $cost = $results[0]['price'];
                 $total += $cost;
                 
                 
 
             } else {
                 print "Item does not exist, please load up your shopping cart with items we have for sale!";
-                show_form();
                 break;
             }
         }
@@ -122,6 +101,7 @@ function show_form($errors = '', $userTotal) {
         print 'Please correct these errors: <ul><li>';
         print implode('</li><li>', $errors);
         print '</li></ul>';
+        
     }
 
     print <<<_HTML_
@@ -150,5 +130,7 @@ function show_form($errors = '', $userTotal) {
 
         </form>
     _HTML_;
+    
+    echo "SUBTOTAL:" . "$" . $userTotal;
 }
 ?>
