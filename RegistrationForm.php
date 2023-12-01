@@ -113,7 +113,7 @@ function show_form($errors = '') {
             <input type="password" id = "password" name="password" required><br><br>
 
             <label for="confirm-password">Confirm Password:</label>
-            <input type="confirm_password" id = "confirm_password" name="confirm_password" required><br><br>
+            <input type="password" id = "confirm_password" name="confirm_password" required><br><br>
 
             <input type = "submit" value="Submit">
             <input type="hidden" name="_check_submission" value ="1">
