@@ -42,9 +42,8 @@ img {
 <?php
 	
 	include_once('database.php');
-
-    $stmt = $pdo->prepare(
-		"SELECT * FROM items");
+    //Use stored procedure to prevent SQLi
+    $stmt = $pdo->prepare("CALL get_games();");
     $stmt->execute();
     $items = $stmt->fetchAll();
     foreach($items as $item)
