@@ -1,39 +1,115 @@
-.Header {
-    background-color: grey
+body,h1,h2,h3,h4,h5,h6 {font-family: "Arial", sans-serif}
+
+/* unvisited link */
+      a:link {
+        color: #E1E1E1;
+        text-decoration:none;
+      }
+      /* visited link */
+      a:visited {
+        color: #E1E1E1;
+        text-decoration:none;
+      }
+      /* mouse over link */
+      a:hover {
+        color: white;
+        text-decoration:none;
+      }
+      /* selected link */
+      a:active {
+        color: #263727;
+    	text-decoration:none;
+      }
+/* Full height image header */
+body{
+  color:#E1E1E1;
+  background-color: #202B20;
 }
 
-body {background-color: rgb(33, 183, 191);}
-
-#head1 {background-color: rgb(0, 137, 145);}
-#body2 {background-color: rgb(255, 255, 255);}
-#h1 {color: rgb(54, 49, 49); text-align: center; margin: 20px}
-#p1 {
-    text-align: center;
-    color: black;
-    font-size: 12px;
-    margin: 10px;
-}
-#p2 {
-    text-align: center;
-    color: rgb(189, 7, 7);
-    font-size: 12px;
-    margin: 10px;
-}
-#middle {
-    text-align: center;
-}
-#centerB {
-    box-align: center;
+.main {
+  margin-top:90px;
+  background-color: #202B20;
+  color:#E1E1E1;
+  overflow-y: auto;
+  padding-bottom:100px;
 }
 
-.gameitems {
-    display:grid;
-    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-    grid-gap: 20px;
+.header {
+  text-align: left;
+  position: fixed;
+                top: 0px;
+                left: 0px;
+                right: 0px;
+                height: 75px;
+  padding-left:55px;
+  padding-top:15px;
+  background: #0f1512;
+  font-size:20px;
+  color: white;
 }
 
-.gameitem {
-    display: grid;
-    grid-template-rows: max-content 200px 1fr;
-    background-color: beige;
+.footer {
+  text-align: center;
+  padding-top: 10px;
+  position: fixed;
+                bottom: 0px;
+                left:0px;
+                right:0px;
+                height: 35px;
+  background: black;
+  font-size:7px;
+  color: white;
+}
+
+.navigation {
+  text-align: left;
+  letter-spacing:1px;
+  position: fixed;
+                top: 45px;
+                left: 200px;
+                right: 0px;
+  padding: 0px;
+  font-size:15px;
+  color: white;
+}
+
+.logincreate {
+	position:fixed;
+	top:0px;
+	right:28px;
+	font-size:12px;
+	color: #E1E1E1;
+}
+
+.shoppingcartlink {
+  background-color: #436446;
+  position: fixed;
+  		right:24px;
+  		top:44px;
+  border: 2px;
+  border-style: solid;
+  border-color: #314833;
+  color: #DFF1E0;
+  height:35px; 
+  width:120px;
+
+  padding-top:6px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 12px;
+  outline:none;
+}
+
+/* Style the search box inside the navigation bar */
+.topnav input[type=text] {
+  position: fixed;
+  		right:0px;
+  		top:44px;
+  padding: 6px;
+  border: 2px;
+  border-style: solid;
+  border-color: #314833;
+  margin-right: 155px;
+  font-size: 17px;
 }
