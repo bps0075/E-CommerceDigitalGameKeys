@@ -10,7 +10,10 @@
 // Debugging code
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['shoppingCart'])) {
-        $shoppingCart = json_decode($_POST['shoppingCart'], true); // Set true to get an associative array
+        $is_array = isset($_POST['is_array']) && $_POST['is_array'] == '1';
+
+        // Convert JSON data to array based on the flag
+        $shoppingCart = json_decode($_POST['shoppingCart'], $is_array);
 
         // Check if $shoppingCart is an array before using it
         if (is_array($shoppingCart)) {
