@@ -77,7 +77,8 @@ function calculateDisplayTotalPrice($shoppingCart) {
 
         for($i = 0; $i < $cartSize; $i++) {
             //Check the cost of each item
-            $query = "SELECT * FROM items WHERE id = ? LIMIT 1";
+            //Use stored procedure to prevent SQLi            
+            $query = "CALL check_cost(?);";
             $stmt = $pdo->prepare($query);
             $stmt->execute([$id]);
             $results = $stmt->fetchAll();
