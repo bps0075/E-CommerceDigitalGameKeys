@@ -39,7 +39,7 @@ if ($_POST['_check_submission']) {
     $cardNumber = $_POST["cardNumber"];
     $csc = $_POST["csc"];
     $expiration = $_POST["expiration"];
-    $shoppingCart = json_decode($_POST['shoppingCart']); // Now you have $shoppingCart containing the item IDs from the cart. Use this data to calculate the total price and process payment
+    $shoppingCart = json_decode($_POST['shoppingCart'], true); // Now you have $shoppingCart containing the item IDs from the cart. Use this data to calculate the total price and process payment
 
     //email will be obtained from jwt token maybe?
 
@@ -80,7 +80,7 @@ function validate_form($firstName, $middleInitial, $lastName, $cardNumber, $csc,
 function calculateDisplayTotalPrice($shoppingCart) {
     $total = 0.00;
     $cost = 0.00;
-    $cartSize = count($shoppingCart);
+    $cartSize = count((array)$shoppingCart);
     try {
         require_once "database.php";
 
