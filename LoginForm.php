@@ -130,7 +130,7 @@ function show_form($errors = '') {
         <input type="text" id="email" name="email" required><br><br>
 
         <label for="password">Password:</label>
-        <input type="password" id = "password" name="password" required><br><br>
+        <input type="password" autocomplete="off" id = "password" name="password" required><br><br>
 
         <input type = "submit" value="Submit">
         <input type="hidden" name="_check_submission" value ="1">
