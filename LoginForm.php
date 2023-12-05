@@ -124,6 +124,8 @@ function show_form($errors = '') {
     }
 
     print<<<_HTML_
+    	<link rel="stylesheet" type="text/css" href="css/style.css"></link>
+    	<a href="index.php" style="text-decoration:none"><img src="key.png" style="width:70px;height:70px;margin-top:5px;"></a>
         <h1> Login to an account</h1>
         <form method="POST" action="$_SERVER[PHP_SELF]">
         <label for="email">Email:</label>
