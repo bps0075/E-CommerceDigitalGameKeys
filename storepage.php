@@ -61,7 +61,7 @@ echo "<button nonce='" . $random . "' onClick='goToPayment()'>Shopping Cart</but
     {
         $id = $item['id'];
         echo "<tr>";
-		echo "<td><h1><a href=game-" . $item['name'] . ">". $item['name'] ."</a></h1></td>";
+		echo "<td><h1>". $item['name'] ."</h1></td>";
 		echo "<td><p> $" .$item['price'] . "</p></td>";
         echo "<td><button  nonce='". $random . "' onclick='addToCart($id)'> Add to cart </button></td>";
         echo "</tr>";
