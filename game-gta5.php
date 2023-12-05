@@ -38,29 +38,32 @@ echo "<button nonce='" . $random . "' onClick='goToPayment()'>Shopping Cart</but
 ?>
 </div>
 </div>
-
+	
 <div class="main">
-<p class="categorytxt">FEATURED AND TRENDING</p>
+<img src="gta5.jpg" style="box-shadow: 0px 4px 4px #161E16;margin-left:60px;margin-top:10px;width:300px;height:300px;">
+<p class="gametxt">
+</br>
+<b>Grand Theft Auto v</b>
+</br>
+</br>
+Price: $30
+</br>
+</br>
+Grand Theft Auto V for PC offers players the option to explore the award-winning world of Los Santos and Blaine County in resolutions of up to 4k and beyond, as well as the chance to experience the game running at 60 frames per second.</p>
 
-<div class="featuredgames">
-<a href="game-stardew.php"><img src="stardewvalley.jpg" style="box-shadow: 0px 4px 4px #161E16;margin-left:60px;margin-top:10px;width:300px;height:300px;"></a>
-<a href="game-ror.php"><img src="ror.png" style="box-shadow: 0px 4px 4px #161E16;margin-left:60px;margin-top:10px;width:300px;height:300px;"></a>
-<a href="game-outlast.php"><img src="outlast.png" style="box-shadow: 0px 4px 4px #161E16;margin-left:60px;margin-top:10px;width:300px;height:300px;"></a>
-<a href="game-sotf.php"><img src="sotf.jpg" style="box-shadow: 0px 4px 4px #161E16;margin-left:60px;margin-top:10px;width:300px;height:300px;"></a>
-<a href="game-gta5.php"><img src="gta5.jpg" style="box-shadow: 0px 4px 4px #161E16;margin-left:60px;margin-top:10px;width:300px;height:300px;"></a>
-<a href="game-er.php"><img src="er.jpg" style="box-shadow: 0px 4px 4px #161E16;margin-left:60px;margin-top:10px;width:300px;height:300px;"></a>
-<a href="game-doom.php"><img src="doom.jpg" style="box-shadow: 0px 4px 4px #161E16;margin-left:60px;margin-top:10px;width:300px;height:300px;"></a>
-<a href="game-gg.php"><img src="gg.jpg" style="box-shadow: 0px 4px 4px #161E16;margin-left:60px;margin-top:10px;width:300px;height:300px;"></a>
-</div>
+
+	
 
 </div>	
 
 <!--Footer content-->
 <div class="footer">
-  <p class="footertxt">
+  <p style="padding-top:8px">
     Copyright © 2023 Digital Keys. All rights reserved.
   </p>
+</footer>
 </div>
 
 </body>
 </html>
+

@@ -38,28 +38,31 @@ echo "<button nonce='" . $random . "' onClick='goToPayment()'>Shopping Cart</but
 ?>
 </div>
 </div>
-
+	
 <div class="main">
-<p class="categorytxt">FEATURED AND TRENDING</p>
+<img src="stardewvalley.jpg" style="box-shadow: 0px 4px 4px #161E16;margin-left:55px;margin-top:10px;width:300px;height:300px;">
+<p class="gametxt">
+</br>
+<b>Stardew Valley</b>
+</br>
+</br>
+Price: $15
+</br>
+</br>
+Stardew Valley is a game where you create your own farm, live off the land, and interact with the local community. You can raise animals, fish, tend crops, craft items, date, and explore caves with over 30 characters and 12 townsfolk.
+</p>
 
-<div class="featuredgames">
-<a href="game-stardew.php"><img src="stardewvalley.jpg" style="box-shadow: 0px 4px 4px #161E16;margin-left:60px;margin-top:10px;width:300px;height:300px;"></a>
-<a href="game-ror.php"><img src="ror.png" style="box-shadow: 0px 4px 4px #161E16;margin-left:60px;margin-top:10px;width:300px;height:300px;"></a>
-<a href="game-outlast.php"><img src="outlast.png" style="box-shadow: 0px 4px 4px #161E16;margin-left:60px;margin-top:10px;width:300px;height:300px;"></a>
-<a href="game-sotf.php"><img src="sotf.jpg" style="box-shadow: 0px 4px 4px #161E16;margin-left:60px;margin-top:10px;width:300px;height:300px;"></a>
-<a href="game-gta5.php"><img src="gta5.jpg" style="box-shadow: 0px 4px 4px #161E16;margin-left:60px;margin-top:10px;width:300px;height:300px;"></a>
-<a href="game-er.php"><img src="er.jpg" style="box-shadow: 0px 4px 4px #161E16;margin-left:60px;margin-top:10px;width:300px;height:300px;"></a>
-<a href="game-doom.php"><img src="doom.jpg" style="box-shadow: 0px 4px 4px #161E16;margin-left:60px;margin-top:10px;width:300px;height:300px;"></a>
-<a href="game-gg.php"><img src="gg.jpg" style="box-shadow: 0px 4px 4px #161E16;margin-left:60px;margin-top:10px;width:300px;height:300px;"></a>
-</div>
+
+	
 
 </div>	
 
 <!--Footer content-->
 <div class="footer">
-  <p class="footertxt">
+  <p style="padding-top:8px">
     Copyright © 2023 Digital Keys. All rights reserved.
   </p>
+</footer>
 </div>
 
 </body>
